@@ -6,16 +6,16 @@
   "publisher": "witcheng",
   "author": {
     "name": "witcheng",
-    "email": "your-email@example.com"
+    "email": "cch773608490@gmail.com"
   },
   "license": "MIT",
   "icon": "resources/icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/witcheng/newapi-stats.git"
+    "url": "https://github.com/witcheng1024/newapi-stats.git"
   },
   "engines": {
-    "vscode": "^1.74.0"
+    "vscode": "^1.102.0"
   },
   "categories": [
     "Visualization",

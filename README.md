@@ -138,4 +138,4 @@ MIT License
 ## 致谢
 
 - 感谢 [OneAPI](https://github.com/songquanpeng/one-api) 和 [NewAPI](https://github.com/QuantumNous/new-api) 项目
-- 基于 [yesCode Stats](https://github.com/StevenQi7/yesCode-Stats) 进行优化和扩展
+- 基于 [yesCode Stats](https://github.com/StevenQi7/yesCode-Stats) 进行扩展

@@ -16,5 +16,4 @@ src/**
 test-api.js
 PROJECT-SUMMARY.md
 .vscode/
-resources/
 package-lock.json
