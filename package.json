@@ -1,0 +1,144 @@
+{
+  "name": "newapi-stats",
+  "displayName": "NewAPI Stats",
+  "description": "监控 NewAPI/OneAPI 站点使用量，实时显示余额、消耗和使用统计",
+  "version": "0.1.0",
+  "publisher": "witcheng",
+  "author": {
+    "name": "witcheng",
+    "email": "your-email@example.com"
+  },
+  "license": "MIT",
+  "icon": "resources/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/witcheng/newapi-stats.git"
+  },
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Visualization",
+    "Other"
+  ],
+  "keywords": [
+    "newapi",
+    "oneapi",
+    "claude",
+    "openai",
+    "api",
+    "usage",
+    "monitor",
+    "statistics",
+    "余额监控",
+    "使用统计"
+  ],
+  "galleryBanner": {
+    "color": "#2d3748",
+    "theme": "dark"
+  },
+  "preview": false,
+  "qna": "marketplace",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "extensionKind": [
+    "ui"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "newapi-stats.refresh",
+        "title": "NewAPI: 刷新数据",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "newapi-stats.configure",
+        "title": "NewAPI: 设置",
+        "icon": "$(gear)"
+      },
+      {
+        "command": "newapi-stats.resetAll",
+        "title": "NewAPI: 重置所有配置",
+        "icon": "$(trash)"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "newapiStats",
+          "name": "NewAPI 使用统计",
+          "icon": "$(graph)",
+          "contextualTitle": "NewAPI 使用统计",
+          "welcome": "欢迎使用 NewAPI 使用统计插件！\n\n请先点击上方的设置按钮 ⚙️ 配置你的 NewAPI 站点信息。"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "newapi-stats.refresh",
+          "when": "view == newapiStats",
+          "group": "navigation"
+        },
+        {
+          "command": "newapi-stats.configure",
+          "when": "view == newapiStats",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "NewAPI 使用统计",
+      "properties": {
+        "newapi-stats.baseUrl": {
+          "type": "string",
+          "default": "",
+          "description": "NewAPI 站点地址"
+        },
+        "newapi-stats.userId": {
+          "type": "number",
+          "default": 0,
+          "description": "用户 ID"
+        },
+        "newapi-stats.refreshInterval": {
+          "type": "number",
+          "default": 300,
+          "minimum": 30,
+          "description": "自动刷新间隔（秒，最小30秒）"
+        },
+        "newapi-stats.conversionFactor": {
+          "type": "number",
+          "default": 500000,
+          "description": "Token 到 USD 转换因子"
+        },
+        "newapi-stats.exchangeRate": {
+          "type": "number",
+          "default": 7.2,
+          "description": "USD 到 CNY 汇率"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/node": "^16.18.126",
+    "@types/vscode": "^1.102.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "@vscode/test-electron": "^2.2.0",
+    "eslint": "^8.28.0",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "https": "^1.0.0"
+  }
+}
