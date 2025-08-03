@@ -13,10 +13,9 @@
 
 ## 支持的站点
 
-所有基于 [OneAPI](https://github.com/songquanpeng/one-api) 和 [NewAPI](https://github.com/QuantumNous/new-api) 部署的 AI 中转站点，包括但不限于：
+所有基于 [OneAPI](https://github.com/songquanpeng/one-api) 和 [NewAPI](https://github.com/QuantumNous/new-api) 部署的 AI 中转站点。
 
-- instcopilot-api.com
-- 其他使用相同 API 格式的站点
+**注意**: 本扩展目前主要在 https://instcopilot-api.com 上进行测试，其他 NewAPI 站点的兼容性可能需要进一步验证。
 
 ## 安装配置
 
@@ -28,7 +27,7 @@
 
 首次使用会弹出设置向导，按步骤配置：
 
-1. **站点地址**: 输入你的 NewAPI 站点 URL（如：`https://instcopilot-api.com`）
+1. **站点地址**: 输入你的 NewAPI 站点 URL（如：`https://your-newapi-site.com`）
 2. **用户 ID**: 在站点的用户信息页面找到你的用户 ID
 3. **Session Cookie**: 从浏览器开发者工具中复制 session cookie 值
 

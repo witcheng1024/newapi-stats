@@ -79,8 +79,8 @@ export async function activate(context: vscode.ExtensionContext) {
             case '设置站点地址':
                 const baseUrl = await vscode.window.showInputBox({
                     prompt: '请输入 NewAPI 站点地址',
-                    placeHolder: 'https://instcopilot-api.com',
-                    value: config.get<string>('baseUrl', 'https://instcopilot-api.com'),
+                    placeHolder: 'https://your-newapi-site.com',
+                    value: config.get<string>('baseUrl', ''),
                     validateInput: (value) => {
                         if (!value || !value.startsWith('http')) {
                             return '请输入有效的 URL 地址';
@@ -98,7 +98,7 @@ export async function activate(context: vscode.ExtensionContext) {
             case '设置用户 ID':
                 const userId = await vscode.window.showInputBox({
                     prompt: '请输入用户 ID（可在站点的用户信息页面找到）',
-                    placeHolder: '4211',
+                    placeHolder: '例如: 1234',
                     value: config.get<number>('userId', 0).toString(),
                     validateInput: (value) => {
                         const num = parseInt(value);
@@ -120,7 +120,7 @@ export async function activate(context: vscode.ExtensionContext) {
                 const sessionCookie = await vscode.window.showInputBox({
                     prompt: '请输入 Session Cookie（从浏览器开发者工具中复制）',
                     password: true,
-                    placeHolder: 'MTc1NDEyODM3MnxEWDhFQVFM...',
+                    placeHolder: 'MTcxxxxxxxxxxxFQVFM...',
                     value: currentCookie,
                     validateInput: (value) => {
                         if (!value || value.trim().length === 0) {
@@ -305,8 +305,8 @@ async function runSetupWizard(
     // 步骤1: 设置站点地址
     const baseUrl = await vscode.window.showInputBox({
         prompt: '步骤 1/3: 请输入 NewAPI 站点地址',
-        placeHolder: 'https://instcopilot-api.com',
-        value: 'https://instcopilot-api.com',
+        placeHolder: 'https://your-newapi-site.com',
+        value: '',
         ignoreFocusOut: true,
         validateInput: (value) => {
             if (!value || !value.startsWith('http')) {
@@ -324,7 +324,7 @@ async function runSetupWizard(
     // 步骤2: 设置用户ID
     const userId = await vscode.window.showInputBox({
         prompt: '步骤 2/3: 请输入用户 ID（可在站点的用户信息页面找到）',
-        placeHolder: '4211',
+        placeHolder: '例如: 1234',
         ignoreFocusOut: true,
         validateInput: (value) => {
             const num = parseInt(value);
@@ -344,7 +344,7 @@ async function runSetupWizard(
     const sessionCookie = await vscode.window.showInputBox({
         prompt: '步骤 3/3: 请输入 Session Cookie（从浏览器开发者工具中复制）',
         password: true,
-        placeHolder: 'MTc1NDEyODM3MnxEWDhFQVFM...',
+        placeHolder: 'MTcxxxxxxxxxxxFQVFM...',
         ignoreFocusOut: true,
         validateInput: (value) => {
             if (!value || value.trim().length === 0) {
