@@ -12,13 +12,13 @@ export class StatusBarManager implements vscode.Disposable {
 
     update(stats: Stats): void {
         const balanceText = `💰 $${stats.balanceUSD.toFixed(2)}`;
-        const usageText = `📊 ${stats.usagePercentage.toFixed(1)}%`;
+        const remainingText = `📊 ${stats.remainingPercentage.toFixed(1)}%`;
         const timeText = `🔄 ${stats.lastUpdated.toLocaleTimeString('zh-CN', { 
             hour: '2-digit', 
             minute: '2-digit' 
         })}`;
         
-        this.statusBarItem.text = `${balanceText} | ${usageText} | ${timeText}`;
+        this.statusBarItem.text = `${balanceText} | ${remainingText} | ${timeText}`;
         this.statusBarItem.tooltip = this.createTooltip(stats);
     }
 
@@ -30,7 +30,7 @@ export class StatusBarManager implements vscode.Disposable {
             `📅 今日消耗: $${stats.todayConsumptionUSD.toFixed(2)} (${stats.todayConsumption.toLocaleString()} tokens)`,
             `📈 总消耗: $${stats.totalConsumptionUSD.toFixed(2)} (${stats.totalConsumption.toLocaleString()} tokens)`,
             `💎 总金额: $${stats.totalAmountUSD.toFixed(2)}`,
-            `📊 使用率: ${stats.usagePercentage.toFixed(1)}%`,
+            `📊 剩余率: ${stats.remainingPercentage.toFixed(1)}%`,
             `🔢 今日请求: ${stats.todayRequests.toLocaleString()} 次`,
             `🔢 总请求: ${stats.totalRequests.toLocaleString()} 次`,
             ``,

@@ -90,10 +90,10 @@ export class StatsProvider implements vscode.TreeDataProvider<StatsItem> {
                     'diamond'
                 ),
                 
-                // 使用率
+                // 剩余率
                 new StatsItem(
-                    '📊 使用率',
-                    `${this.stats.usagePercentage.toFixed(1)}% ${this.getProgressBar(this.stats.usagePercentage)}`,
+                    '📊 剩余率',
+                    `${this.stats.remainingPercentage.toFixed(1)}% ${this.getProgressBar(this.stats.remainingPercentage)}`,
                     vscode.TreeItemCollapsibleState.None,
                     'graph-line'
                 ),
@@ -148,12 +148,12 @@ class StatsItem extends vscode.TreeItem {
         this.description = this.value;
         this.iconPath = new vscode.ThemeIcon(this.icon);
         
-        // 根据使用率设置不同颜色
-        if (this.label.includes('使用率')) {
-            const usage = parseFloat(this.value);
-            if (usage > 90) {
+        // 根据剩余率设置不同颜色
+        if (this.label.includes('剩余率')) {
+            const remaining = parseFloat(this.value);
+            if (remaining < 10) {
                 this.iconPath = new vscode.ThemeIcon('error', new vscode.ThemeColor('editorError.foreground'));
-            } else if (usage > 75) {
+            } else if (remaining < 20) {
                 this.iconPath = new vscode.ThemeIcon('warning', new vscode.ThemeColor('editorWarning.foreground'));
             } else {
                 this.iconPath = new vscode.ThemeIcon('graph-line', new vscode.ThemeColor('charts.green'));

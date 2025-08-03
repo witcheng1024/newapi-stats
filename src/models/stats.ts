@@ -76,6 +76,7 @@ export interface Stats {
     
     // 计算字段
     usagePercentage: number;           // 使用百分比 (总消耗/(余额+总消耗)*100)
+    remainingPercentage: number;       // 剩余百分比 (余额/(余额+总消耗)*100)
     todayUsagePercentage: number;      // 今日使用百分比
     
     lastUpdated: Date;

@@ -317,6 +317,11 @@ export class NewAPIService {
         return Math.min(100, Math.max(0, (consumed / total) * 100));
     }
 
+    private calculateRemainingPercentage(balance: number, total: number): number {
+        if (total <= 0) return 0;
+        return Math.min(100, Math.max(0, (balance / total) * 100));
+    }
+
     async fetchStats(): Promise<Stats | null> {
         if (!this.config.baseUrl || !this.config.userId || !this.config.sessionCookie) {
             return null;
@@ -343,10 +348,16 @@ export class NewAPIService {
             const totalConsumptionCNY = this.convertTokensToCNY(totalUsage.total_quota_consumption);
             const totalAmountCNY = balanceCNY + totalConsumptionCNY;
             
-            // 计算使用百分比
+            // 计算使用百分比和剩余百分比
+            const totalAmount = balance + totalUsage.total_quota_consumption;
             const usagePercentage = this.calculateUsagePercentage(
                 totalUsage.total_quota_consumption, 
-                balance + totalUsage.total_quota_consumption
+                totalAmount
+            );
+            
+            const remainingPercentage = this.calculateRemainingPercentage(
+                balance,
+                totalAmount
             );
             
             const todayUsagePercentage = this.calculateUsagePercentage(
@@ -380,6 +391,7 @@ export class NewAPIService {
                 
                 // 计算字段
                 usagePercentage,
+                remainingPercentage,
                 todayUsagePercentage,
                 
                 lastUpdated: new Date()
